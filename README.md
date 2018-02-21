@@ -1,1 +1,3 @@
-# ArtificialIntelligence
+# Artificial Intelligence
+
+## Valentina Chacón Buitrago
