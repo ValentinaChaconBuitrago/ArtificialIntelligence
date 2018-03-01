@@ -1,0 +1,4 @@
+*.log
+/paper/main.pdf
+*.aux
+paper/*.synctex.gz
