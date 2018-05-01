@@ -196,25 +196,25 @@ morestring=[b]"
   belowskip=0pt
 }
 
-% context traits listings
-\lstdefinestyle{ctxtraits}
- {language=JavaScript,
+% tensorflow listings
+\lstdefinestyle{tensorflow}
+ {language=Python,
   frame=lines,
   showstringspaces=false,
   keywordstyle=\tt\bf,
   tabsize=3,
   style=floating,
-  morekeywords={Trait, cop, proceed, Context, activate, deactivate, adapt, addObjectPolicy, manager}
+  morekeywords={with, as, tf, pd, lambda, DataFrame}
 }
 
-%context traits environment    
-\lstnewenvironment{ctxtraits}[1][]
- {\lstset{style=ctxtraits,#1}}{}  
+%tensorflow environment    
+\lstnewenvironment{tensorflow}[1][]
+ {\lstset{style=tensorflow,#1}}{}  
 
 
- % Context Traits in line source-code
-\newcommand{\scode}[1]{\textrm{\texttt{#1}}}
-\def\scode{\lstinline[style=ctxtraits]}
+ % tensorflow in line source-code
+\newcommand{\tensorcode}[1]{\textrm{\texttt{#1}}}
+\def\tensorcode{\lstinline[style=tensorflow]}
 
 %----[ Commands ]---
 %Latins
