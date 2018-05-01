@@ -3,7 +3,7 @@
 
 
 %%
-\section{Background on \acl{ML} Techines}
+\section{Background on \acl{ML} Techniques}
 \label{sec:related}
 
 This section provides the background for the main existing \ac{ML} techniques --that is, linear 
@@ -13,9 +13,9 @@ application domains, and some of the technologies available to use each of them.
 %%%
 \subsection{Linear Regression}
 
-Regression Models predicts continuous values. This algorithm focuses on reducing error by making accurate predictions of data. However, it is important to understand that \ac{ML} algorithms are not able to directly sense input examples. The latter means that in order to provide the model with useful inputs it is a must to create a representation of the data. Because of this, \ac{ML} and specifically Supervised learning focus on representation rather than code. 
+Regression Models are used for the prediction of values in a continuous domain. Linear regression 
+focuses on reducing error by making accurate predictions of data. However, it is important to understand that \ac{ML} algorithms are not able to directly sense input examples. The latter means that in order to provide the model with useful inputs it is a must to create a representation of the data. Because of this, \ac{ML} and specifically Supervised learning focus on representation rather than code. 
 
-<<<<<<< HEAD
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/regresion}
@@ -23,16 +23,10 @@ Regression Models predicts continuous values. This algorithm focuses on reducing
   \label{fig:regresion}
 \end{figure}
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Cual de los dos dejo!!!!!!!!!!!!!!!!!!!!!!!!
 
 \begin{equation} \label{eq:linearReg}
 y'=w_I x_I+b
 \end{equation}
-=======
-\[
-y' = w_Ix_I + b
-\]
->>>>>>> origin/master
 
 \begin{enumerate}
  \item Label (y’): is the desired output, for instance it is the target the model is aiming for.
@@ -41,7 +35,6 @@ y' = w_Ix_I + b
  \item Bias (b): is where the line intercepts the y-axis. It is useful because it offsets predictions made. 
  \item Subscripts (i): below each variable represents whether there is more than one dimension.
 \end{enumerate}
-
 
 The Model defines the connection between features and labels. In other words, it maps examples to predict labels. This is a recurrent process where it progressively learns the interrelation between features and labels. As a result the model resolves good weight and bias for all values from the given examples.  Over the fact that the user modifies the parameters of the model it is imperative to measure how far predictions are from reality.  A common way to identify the error is through the Least Square errors technique. Although there are other methods this one results attractive when the user is beginning to interact with Supervised Machine Learning because the difference between an incorrect target and the original value will be largely evident and squaring it will make it even larger. This way the errors in a single example using the model will be easier to identify, and thus more apparent to improve and modify.\fref{fig:L2loss equation} shows the equation used to calculate the Least Square errors in the model.
 
@@ -109,7 +102,11 @@ A biological neuron has three components important in the understanding of artif
   \label{fig:humanNeuron}
 \end{figure}
 
-\begin{enumerate} \item Axon:  region where a neuron sends messages to other neurons. \item Dendritic tree: area where the neuron collects input from other neurons. \item Synapses: in this region an axon from one neuron contacts the dendritic tree of another neuron. A Spike of activity in the axon causes charge to be injected into the post-synaptic neuron.\end{enumerate}
+\begin{enumerate}
+ \item Axon:  region where a neuron sends messages to other neurons.
+ \item Dendritic tree: area where the neuron collects input from other neurons.
+ \item Synapses: in this region an axon from one neuron contacts the dendritic tree of another neuron. A Spike of activity in the axon causes charge to be injected into the post-synaptic neuron.
+\end{enumerate}
 
 According to this, Neural Networks comprise a system where biological neurons are represented by nodes and are considered a simplified representation of a processing element (unit). Additionally, connections between units are represented as arcs and this is therefore interpreted as the architecture of the model ~\cite{fausett93}. Likewise, as a way to indicate the information flow of the network arrowheads in the model are present in connections between nodes. Furthermore understanding the dynamics of the model is important to recognize how similar the Machine Learning version is to the biological nervous system. As a matter of fact, humans are born with as many as 100 billion neurons that are not replaced when they die. As a reflection of this, Neural Networks are designed to be insensitive to small damage to the network. 
 
