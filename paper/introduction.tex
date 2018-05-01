@@ -14,31 +14,52 @@ programming languages (\eg PROLOG). \ac{AI} only began gaining proper recognitio
 great algorithmic development, and the ever growing computing power (\ie \ac{HPC} and Cloud). 
 Different challenges and learning goals have risen in the development of \ac{AI} 
 projects~\cite{russel09}. As a matter of fact, it is no longer possible to refer to \ac{AI} as a whole. 
-Rather, it is necessary to take into account the type of \emph{reasoning}, \emph{learning}, or \emph{model} used by the machine. As is, there are two major categories in which \ac{AI} approaches can be classified:
+Rather, it is necessary to take into account the type of \emph{reasoning}, \emph{learning}, or 
+\emph{model} used by the machine. As is, there are two major categories in which \ac{AI} 
+approaches can be classified:
 \begin{enumerate*}[label=(\arabic*)]
 \item \authorcomment[missing]{}{Enumerate the division of AI}, and
 \item .
 \end{enumerate*}
 
-\authorcomment[missing]{}{machine learning definition}
-\ac{ML}~\cite{watkins92} subdivision was studied. Therefore, one can say (vocab) that \ac{ML} began as an initiative to solve AI problems by using data and learning from it. ML provides computers with the ability to make predictions with previously unseen data, this implies that computers are now able to act and make decisions without the intervention of a programmer. This broad field of study is rapidly growing due to its diverse applications such as shape, patterns and speech recognition, effective web search and medical diagnosis among others. ML comprises several techniques where each can solve specific task, and sometimes more than one technique may lead to the same results. ML can be distributed in several categories.
-
-This paper will focus on Supervised Machine Learning, where models produce useful predictions of unseen data by combining inputs. \fref{fig:ai-categorization} \authorcomment[missing]{}{Explain categories, which one do we use and why}
-
-
-\begin{enumerate}
- \item 1 [4]
- \item 2
-\end{enumerate}
-
+\ac{ML}~\cite{mitchell97} encompasses a set of algorithms that progressively improve their 
+performance to execute a given set of tasks. \ac{ML} algorithms rely on data, using statistical 
+analysis to learn or even predict their behavior based on previously unseen data. As a consequence, 
+computers are now able to act and make decisions without programmers explicitly describing all 
+tasks to perform. \ac{ML} algorithms can be used for a diverse set of applications such as shape 
+recognition, patterns and speech recognition, effective web search, data classification, or medical 
+diagnosis. \ac{ML} techniques are divided in the following XXX categories, as shown in 
+\fref{fig:ai-categorization}.
+\begin{description}
+  \item[name\_technique:] explanation \authorcomment[missing]{}{Explain categories briefly, what is their main thing}
+\end{description}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/ai-categorization}
-  \caption{Categorization of \ac{AI} (taken from~\cite{})}
+  \caption{Categorization of \ac{AI}}
   \label{fig:ai-categorization}
 \end{figure}
+
+Given a particular problem, techniques belonging to different \ac{ML} categories can yield a solution. 
+Even more, more than one technique may lead to the same result. 
+
+The current landscape of software developments is characterized by systems requiring the processing 
+of large volumes of data, and the exploitation of such data to improve the quality of the system or to 
+offer specialized/personalized behavior. Examples of such systems can be found in the domains of 
+\ac{IOT}~\cite{mattern10}, \acs{CPS}~\cite{holzl15}, or Smart Cities~\cite{zanella14}. \ac{AI} and 
+\ac{ML} techniques seem to be appropriate for the development of such systems, given the large 
+data to be processed, the need to adjust or evolve algorithms as more data is gathered, and the 
+impossibility to provide programs for all possible future situations. 
+
+Nonetheless, for many of these projects there are techniques that are more appropriate than others.
+This paper offers an overview of the field of \ac{ML}, presenting the necessary background for its 
+main representative techniques (\fref{sec:related}). That is, supervised \ac{ML}, and unsupervised 
+\ac{ML}. For each of these models we present an example application, characterizing the main 
+requirements to apply each technique (\fref{sec:validation}).
+
 
 \endinput
 
 Machine Learning has become a topic of interest because of its large field of application (deepen). Artificial intelligence is a broad area of knowledge comprised with several branches where each one has a different configuration and purpose. As a result, we consider one question: what field should a new user start working with if the goal is to classify information from a specific data set? Our work responds to this question based on empirical experimentation where we identified that approaching Machine Learning through supervised linear regression models allows users to understand the basic applications while fulfilling their objective. Moreover, due to available resources such as high level TensorFlow Estimator API and the column-oriented data analysis API Pandas learning doesn’t require long(subjective) before the user can start working on Machine Learning projects. 
+
