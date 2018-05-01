@@ -6,41 +6,53 @@
 \label{sec:introduction}
 
 According to Encyclopedia Britannica, \ac{AI} is understood as the ability of a computer or 
-computer-controlled machine to perform tasks associated with intelligent beings. The idea of 
-\ac{AI} spawns from the work on \textit{artificial neurons} and the later development of reasoning 
-programming languages (\eg PROLOG). \ac{AI} only began gaining proper recognition in the 
-1980's, with the rise of expert systems~\cite{russel09}.  Recently, there has been a revival of 
+computer-controlled machine to perform tasks associated with intelligent beings. While the early 
+idea of \ac{AI} spawns from the work on \textit{artificial neurons} and the later development of
+reasoning programming languages (\eg Prolog). \ac{AI} only began gaining proper recognition 
+in the 1980's, with the rise of expert systems~\cite{russel09}.  Recently, there has been a revival of 
 \ac{AI}, partly due to the great amount of data available, collected through different devices, the 
-great algorithmic development, and the ever growing computing power (\ie \ac{HPC} and Cloud). 
-Different challenges and learning goals have risen in the development of \ac{AI} 
+great algorithmic development, and the ever growing computing power in domains as \ac{HPC} or 
+Cloud. Different challenges and learning goals have risen in the development of \ac{AI} 
 projects~\cite{russel09}. As a matter of fact, it is no longer possible to refer to \ac{AI} as a whole. 
 Rather, it is necessary to take into account the type of \emph{reasoning}, \emph{learning}, or 
 \emph{model} used by the machine. As is, there are two major categories in which \ac{AI} 
 approaches can be classified:
 \begin{enumerate*}[label=(\arabic*)]
-\item Applied Systems, and
-\item General Systems.
+\item applied systems, and
+\item general systems.
 \end{enumerate*}
 
-\ac{ML}~\cite{mitchell97} encompasses a set of algorithms that progressively improve their 
-performance to execute a given set of tasks. \ac{ML} algorithms rely on data, using statistical 
-analysis to learn or even predict their behavior based on previously unseen data. As a consequence, 
-computers are now able to act and make decisions without programmers explicitly describing all 
-tasks to perform.
+Currently one of the most sought after question for \ac{AI} application is that of \emph{pattern 
+recognition} from a data set. This is due to the requirements of current systems to process large 
+volumes of data, and the exploitation of such data to improve the quality of the system, or to offer 
+personalized behavior. Examples of such systems can be found in the domains of 
+\ac{IOT}~\cite{mattern10}, \acs{CPS}~\cite{holzl15}, or Smart Cities~\cite{zanella14}. \ac{AI} and 
+\ac{ML} techniques seem to be appropriate for the development of such systems, given the large 
+data to be processed, the need to adjust or evolve algorithms as more data is gathered, and the 
+impossibility to provide programs for all possible future situations. 
+A particular technique from the general systems subcategory arises 
+as a suitable candidate to solve these problems --that is, \ac{ML}~\cite{mitchell97}. 
+\ac{ML} encompasses a set of algorithms that progressively improve their performance to execute 
+a given set of tasks. \ac{ML} algorithms rely on data, using statistical analysis to learn or even predict 
+their behavior based on previously unseen data. As a consequence, computers are now able to act 
+and make decisions without programmers explicitly describing all tasks to perform.
 
-Machine Learning has become a topic of interest because of its large field of application. Artificial intelligence is a broad area of knowledge comprised with several branches where each one has a different configuration and purpose. As a result, we consider one question: what field should a new user start working with if the goal is to classify information from a specific data set, what field is more appropriate for pattern recognition? Our work responds to this question based on empirical experimentation where we identified that approaching Machine Learning through supervised linear regression models allows users to understand the basic applications while fulfilling their data classification objective. Furthermore, we were able to recognize Neural Networks as a good source to classify patters in an effective and approachable way. Moreover, due to available resources such as high level TensorFlow Estimator API and the column-oriented data analysis API Pandas learning doesn’t require long before the user can start working on Machine Learning projects. 
-
-\fref{fig:ai-categorization} shows \ac{ML} as a whole can solve a considerable amount of tasks that emerge from diverse backgrounds. In other words, \ac{ML} is powerful when dealing with real world problems~\cite{michalski13}, elevating the completeness of the solutions raised. 
-The study on \ac{ML} began as an initiative to solve \ac{AI} problems by using data and learning from it. \ac{ML} provides computers with the ability to make predictions with previously unseen data, this implies that computers are now able to act and make decisions without the intervention of a programmer. This broad field of study is rapidly growing due to its diverse applications such as shape, patterns and speech recognition, effective web search, and medical diagnosis. \ac{ML} comprises several techniques to solve specific tasks, noting that multiple of such techniques may lead to the same results. \ac{ML} techniques are divided in the following six categories:
+\ac{ML} as a whole can solve a considerable amount of tasks that emerge from diverse backgrounds. 
+In other words, \ac{ML} is powerful when dealing with real world problems~\cite{michalski13}, 
+elevating the completeness of the solutions raised. 
+The study on \ac{ML} began as an initiative to solve \ac{AI} problems by using data and learning from 
+it. This broad field of study is rapidly growing due to its diverse applications such as shape, patterns 
+and speech recognition, effective web search, and medical diagnosis. \ac{ML} comprises six main 
+techniques to solve specific tasks, noting that multiple of such techniques may lead to the same 
+results. \ac{ML} techniques are categorized as:
 \begin{enumerate}
- \item Structured Prediction
- \item Ensemble Algorithms
- \item Deep Learning 
- \item Unsupervised Learning
- \item Statistical Inference 
- \item Probabilistic Learning
+ \item Structured Prediction~\cite{taskar05}
+ \item Ensemble Algorithms~\cite{dietterich00}
+ \item Deep Learning~\cite{lecun15} 
+ \item Unsupervised Learning~\cite{hastie09}
+ \item Statistical Inference~\cite{robert14} 
+ \item Probabilistic Learning~\cite{robert14}
 \end{enumerate}
-
 
 \begin{figure}[htbp]
   \centering
@@ -49,22 +61,30 @@ The study on \ac{ML} began as an initiative to solve \ac{AI} problems by using d
   \label{fig:ai-categorization}
 \end{figure}
 
-Figure \fref{fig:ai-categorization}  shows different approaches available for \ac{ML}. Each of these has special characteristics that enhance results and provide users with tools for creating optimal models emerging in effective results.  Nevertheless, they each pursue different solutions for  \ac{ML} problems, and sometimes they might not even work properly for all applications. As a result this paper will focus on Supervised Machine Learning  \ac{SML} , where models produce useful predictions of unseen data by combining inputs and hence resulting in an appropriate way to classify information. Alternatively, \ac{NN}  will be considered as the leading method to achieve proper outcomes when working with patter recognition. The latter is resolved due to the fact that  \ac{NN}  are trained based on data that has been labeled in advance. Because of this, the computer learns to perform tasks by analyzing training examples, in this way patterns will be identified in images that correlate with previously designated labels~\cite{mit17}. 
+\fref{fig:ai-categorization} shows the exiting \ac{ML} approaches and their relations. Each of these 
+models presents special characteristics that enhance results and provide users with tools for creating 
+optimal models emerging in effective results.  Nevertheless, they each pursue different solutions for  
+\ac{ML} problems, and sometimes they might not even work properly for all applications. 
 
-The current landscape of software developments is characterized by systems requiring the processing 
-of large volumes of data, and the exploitation of such data to improve the quality of the system or to 
-offer specialized/personalized behavior. Examples of such systems can be found in the domains of 
-\ac{IOT}~\cite{mattern10}, \acs{CPS}~\cite{holzl15}, or Smart Cities~\cite{zanella14}. \ac{AI} and 
-\ac{ML} techniques seem to be appropriate for the development of such systems, given the large 
-data to be processed, the need to adjust or evolve algorithms as more data is gathered, and the 
-impossibility to provide programs for all possible future situations. 
-
-Nonetheless, for many of these projects there are techniques that are more appropriate than others.
 This paper offers an overview of the field of \ac{ML}, presenting the necessary background for its 
-main representative techniques (\fref{sec:related}). That is, supervised \ac{ML}, and unsupervised 
-\ac{ML}. For each of these models we present an example application, characterizing the main 
-requirements to apply each technique (\fref{sec:validation}).
+main representative techniques, \ac{SML}, and \ac{NN} (\fref{sec:related}). 
+\ac{SML} models produce useful predictions of unseen data by combining inputs, hence resulting in 
+an appropriate way to classify information. \ac{NN} are considered as the leading method to achieve 
+proper outcomes when working with patter recognition. \ac{NN} are trained based on data that has 
+been labeled in advance. As a consequence, the learning process is based in analyzing training 
+examples. Patterns are identified, if the current exploration  correlates with previously designated 
+labels~\cite{mit17}. 
+
+For each of these models we present an example application, characterizing the main 
+requirements to apply each technique (\fref{sec:validation}). For the development of the applications 
+we use the TensorFlow Estimator API and the column-oriented data analysis API Pandas.
+We identified that supervised linear regression models allow users to understand the basic 
+applications while fulfilling their data classification objective. Furthermore, we were able to recognize 
+\ac{NN} as a good source to classify patters in an effective and approachable way. 
 
 
 \endinput
+
+Machine Learning through supervised linear regression models allows users to understand the basic applications while fulfilling their data classification objective. Furthermore, we were able to recognize Neural Networks as a good source to classify patters in an effective and approachable way. Moreover, due to available resources such as high level TensorFlow Estimator API and the column-oriented data analysis API Pandas learning doesn’t require long before the user can start working on Machine Learning projects. 
+
 
