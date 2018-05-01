@@ -7,33 +7,55 @@
 \label{sec:related}
 
 %%%
-\subsection{Linear Regresion}
+\subsection{Linear Regression}
 
-Regression Models predicts continuous values. This algorithm focuses on reducing error by making accurate predictions of data. However, it is important to understand that ML algorithms are not able to directly sense input examples. The latter means that in order to provide the model with useful inputs it is a must to create a representation of the data. Because of this, ML and specifically Supervised learning focus on representation rather than code. 
+Regression Models predicts continuous values. This algorithm focuses on reducing error by making accurate predictions of data. However, it is important to understand that \ac{ML} algorithms are not able to directly sense input examples. The latter means that in order to provide the model with useful inputs it is a must to create a representation of the data. Because of this, \ac{ML} and specifically Supervised learning focus on representation rather than code. 
 
-Learning from Data
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{images/regresion}
+  \caption{Linear Regression equation)}
+  \label{fig:regresion}
+\end{figure}
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Cual de los dos dejo!!!!!!!!!!!!!!!!!!!!!!!!
 
+\begin{equation} \label{eq:linearReg}
+y'=w_I x_I+b
+\end{equation}
 
-Label (y’): is the desired output, for instance it is the target the model is aiming for.
-Features (x):  are the way data is represented. Because the user determines this, it is also referred to as the known input.  
-Weight (w):  it represents the search slope, which is the coefficient for the independent variable that in this case is the features.  
-Bias (b): is where the line intercepts the y-axis. It is useful because it offsets predictions made. 
+\begin{enumerate}
+ \item Label (y’): is the desired output, for instance it is the target the model is aiming for.
+ \item Features (x):  are the way data is represented. Because the user determines this, it is also referred to as the known input.  
+ \item Weight (w):  it represents the search slope, which is the coefficient for the independent variable that in this case is the features.  
+ \item Bias (b): is where the line intercepts the y-axis. It is useful because it offsets predictions made. 
 Subscripts (i): below each variable represents whether there is more than one dimension.
+\end{enumerate}
 
-The Model defines the connection between features and labels. In other words, it maps examples to predict labels. This is a recurrent process where it progressively learns the interrelation between features and labels. As a result the model resolves good weight and bias for all values from the given examples.  Over the fact that the user modifies the parameters of the model it is imperative to measure how far predictions are from reality.  A common way to identify the error is through the Least Square errors technique. Although there are other methods this one results attractive when the user is beginning to interact with Supervised Machine Learning because the difference between an incorrect target and the original value will be largely evident and squaring it will make it even larger. This way the errors in a single example using the model will be easier to identify, and thus more apparent to improve and modify.
-L2loss
+
+The Model defines the connection between features and labels. In other words, it maps examples to predict labels. This is a recurrent process where it progressively learns the interrelation between features and labels. As a result the model resolves good weight and bias for all values from the given examples.  Over the fact that the user modifies the parameters of the model it is imperative to measure how far predictions are from reality.  A common way to identify the error is through the Least Square errors technique. Although there are other methods this one results attractive when the user is beginning to interact with Supervised Machine Learning because the difference between an incorrect target and the original value will be largely evident and squaring it will make it even larger. This way the errors in a single example using the model will be easier to identify, and thus more apparent to improve and modify.\fref{fig:L2loss equation} shows the equation used to calculate the Least Square errors in the model.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{images/equation1}
+  \caption{L2loss equation)}
+  \label{fig:L2loss equation}
+\end{figure}
 
 
 Where h(x) represents the corresponding estimated value of x. (http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
 
 The aim is to reach the minimum loss of the model; this goal is achievable through different approaches. For the means of this paper only two will be mentioned. The first one, known as Gradient Descent is the derivate of the least square error result and together with the weight and bias for a given example informs how loss changes for a given example. This way it is possible to adjust the model iteratively until learning weights and bias become the lowest possible. 
 
-In the other hand there is the Stochastic Gradient descent (SGD) where the process is repeated for each individual example.
+In the other hand there is the Stochastic Gradient Descent \ac{SGD} where the process is repeated for each individual example.
 
-(y – h(x))2
+\begin{equation} \label{eq:SGD}
+(y – h(x))^2
+\end{equation}
 
-In this case the gradient is calculated one example at a time. As a result, initial values for b and w are not relevant. However most of the time it is appropriate to begin with 0 in both values. 
+
+In this case equation~\ref{eq:SGD} portraits the case in which the gradient is calculated one example at a time. As a result, initial values for b and w are not relevant. However most of the time it is appropriate to begin with 0 in both values. 
 
 Both Gradient descent algorithms multiply the gradient by a scalar known as the learning rate (sometimes called step size) to determine the next point.  There are several variations to the Stochastic Gradient Descent, and in all of them it is possible to set the learning rate.  Moreover, the learning rate parameter tells the optimizer how for to move the weights in the direction of the gradient for a mini batch. Having a low learning rate is decisive because it provides a more reliable training but it also means that optimization will take a lot of time because the steps towards the minimum loss of the function are especially small. In the other hand, if the learning rate is high it is possible that the training doesn’t converge and might even diverge.  Weight changes can become so big that the optimizer overshoots the minimum and makes the loss worse. The information presented before arises a new question: How can the modeler identify the correct learning rate for the process? 
 As delusive as it might be, the first method with which one can select the correct learning rate is the Naïve approach. This consists of trial and error, start with any learning rate and from there start modifying it according to the received results. 
@@ -43,7 +65,7 @@ The results plotted in the graph suggest that there might be a better line, whic
 
 
 It is recommended to start with a large value such as 0.1 and from there exponentially lower the values (0.1,0.01,0.001).
-The second method created by Leslie N. Smith published in her paper Cyclical learning rates… (Should the rest of it come here) consists of an initial low learning rate that is then increased exponentially when a new batch comes in.
+The second method created by Leslie N. Smith published in her paper Cyclical learning rates~\cite{leslie15} consists of an initial low learning rate that is then increased exponentially when a new batch comes in.
 
 
 %%%%
@@ -52,7 +74,7 @@ The second method created by Leslie N. Smith published in her paper Cyclical lea
 
 
 %%%
-\subsection{Neural networks}
+\subsection{Neural Networks}
 
 
 %%%%
