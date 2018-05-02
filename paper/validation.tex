@@ -57,14 +57,14 @@ After the latter process evaluating the model effectiveness was necessary. For i
 The term generalization refers to the model’s ability to adapt conveniently to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
 
 %%%%
-\subsection{Learning with Neural Network models}
+\subsection{Learning with Neural Networks}
 
 The project regarding Neural Networks was developed using content provided by TensorFlow's website~\cite{tensor18}. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
 As mentioned before in this document, models are not able to directly receive objects as information, thus the first step towards completion was setting a representation of each flower for the model to understand. 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[\textwidth]{images/table}
+  \includegraphics[width=\textwidth]{images/table}
   \caption{Data representation used for modeling (taken from~\cite{tensor18})}
   \label{fig: rep}
 \end{figure}
