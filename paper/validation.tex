@@ -7,18 +7,22 @@
 \label{sec:validation}
 
 \authorcomment[missing]{}{Glue text to the section}
-\authorcomment[missing]{}{Environment of execution}
 
 
 %%%%
-\subsection{Learning from known data}
+\subsection{Environment of execution}
+Because the first project data and guidance was provided by Google's Machine Learning Crash course~\cite{mlchrome18}  it was run directly on the Google Chrome browser using their Colaboratory platform. Nonetheless, it is possible to execute the program offline which requires the user to set up a local Datalab environment by installing Docker~\cite{docker18}.   
+On the other hand, the environment in which the Neural Network was developed for the second  project is TensorFlow. More precisely TensorFlow environment was run in a Jupiter Notebook with python 3 accessed through Anaconda. 
+
+%%%%
+\subsection{Learning with Linear Regression models}
 
 For the first one resources and learning material were taken from Google’s Artificial Intelligence course (Reference).  The course provides knowledge for beginners and experts as well as practice material and online classes. Given data from 1990’s housing system in California, the user is expected to build a model capable of predicting median house price at the granularity of city blocks based on one input feature. For the development for building the model it was necessary to use high level TensorFlow Estimator API and the column-oriented data analysis API, (punctuation) Pandas.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters such as batch size 
 and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to identify that model generalization is crucial when looking for a proper model. The term generalization refers to the model’s ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. In other words, from the data given pull one draw of data from a distribution (data set) then take some more data from that same distribution (test set). If the model does a good job at predicting on the test set and the data set, then we have a good indicator that the model is going to be able to generalize well onto new unseen data.  From this project it is possible to conclude that high-level APIs are a great resource for users with no prior experience because it allows them to focus on the model parameters rather than the code itself. 
 
 
 %%%%
-\subsection{Learning from neural networks}
+\subsection{Learning with Neural Networks models}
 
 The second project developed with data and guidance provided by TensorFlow where the main goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. The Model had to classify the data into one of three iris flowers: Iris setosa, Iris versicolor and Iris virginica.  As said before in this document, it was necessary to set a representation of these classifications for the model to work. Contrary to the method implemented in the first project (supervised machine learning with linear regression) to solve this problem a Deep Neural Network model was implemented. 
 
@@ -26,8 +30,6 @@ The second project developed with data and guidance provided by TensorFlow where
 with something at: lambda
 
 \end{tensorflow}
-
-
 
 (\url{https://www.tensorflow.org/get\_started/premade\_estimators})
 Although TensorFlow Linear Classifier Estimator was also used for this problem, it was required to use the DNNClassifier (to perform multi-class classification). (https://www.tensorflow.org/get\_started/premade\_estimators)
