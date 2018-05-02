@@ -4,3 +4,4 @@
 paper/*.synctex.gz
 *.bbl
 *.blg
+*.out

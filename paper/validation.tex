@@ -6,17 +6,17 @@
 \section{Validation}
 \label{sec:validation}
 
-\authorcomment[missing]{}{Glue text to the section}
-
+This section provides empirical experimentation of the \ac{ML} techniques introduced in the previous section. Two application for pattern recognition were selected to execute each of the techniques. The first application uses previously collected housing system to learn and predict house market prices. The second application, uses pattern recognition for the identification of object (flowers) in images.
 
 %%%%
 \subsection{Environment of execution}
-Because the first project data and guidance was provided by Google's Machine Learning Crash course~\cite{mlchrome18}  it was run directly on the Google Chrome browser using their Colaboratory platform. Nonetheless, it is possible to execute the program offline which requires the user to set up a local Datalab environment by installing Docker~\cite{docker18}.   
-On the other hand, the environment in which the Neural Network was developed for the second  project is TensorFlow. More precisely TensorFlow 1.0 environment was run in a Jupiter Notebook with python 3 accessed through Anaconda. 
+
+As the first project data and guidance was provided by Google's Machine Learning Crash course~\cite{mlchrome18}  it was run directly on the Google Chrome browser using their Colaboratory platform. Nonetheless, it is possible to execute the program offline which requires the user to set up a local Datalab environment by installing Docker~\cite{docker18}.   
+On the other hand, the environment in which the Neural Network was developed for the second  project is TensorFlow. More precisely TensorFlow 1.0 running in a Jupiter Notebook with python 3 accessed through Anaconda. 
 Both projects were developed on a 2013 Intel Core i5 MacBook Air with macOS Sierra version 10.12.6.
 
 %%%%
-\subsection{Learning with Linear Regression models}
+\subsection{Learning with Linear Regression}
 
 For the first project resources and learning material were taken from Google’s Artificial Intelligence course.  The course provides knowledge for beginners and experts as well as practice material and online classes. The premise was as follows: Given data from 1990’s housing system in California, the user is expected to build a model capable of predicting median house price at the granularity of city blocks based on one input feature  ~\cite{mlchrome18}. 
 
@@ -109,7 +109,7 @@ From the above example it is possible to conclude that the model determined a 90
 For both, the Housing and Flower problems, models were trained and predictions were made. When working with information such as the California Housing system, where there is a large amount of data classified in different ways, it was possible to determine empirically that Linear Regression supervised Machine Learning was the most appropriate way to recover a certain trait present in the data. This statement is drawn from the fact that no previous outcome was determined for each information used in the model, thus adjusting Hyperparameters was the only resource available for the user to shape the model.  From here evaluations were made concluding that indeed Linear Regression models present useful solutions while keeping the process accessible and simple for users that are starting to work with \ac{ML}.  On the other hand information accesible for the second project was different resulting in the implementation of a distinct form of \ac{ML}. In this case there was a set of characteristics in which information was supposed to fit in, based on this a Neural Network approach was more feasible. The complexity of the model's input reflected how the Network was modeled and how deep the layers were. Additionally, thanks to probability provided by the model, classifying data becomes a process in which results over time sharpen the classification precision. 
 
 %%%%
-\subsection{Threads to Validity}
+%\subsection{Threads to Validity}
 
 
 

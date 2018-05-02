@@ -116,9 +116,25 @@ accurate results for the mentioned applications.
 %%%
 \subsection{\acl{NN}}
 
-\ac{NN} are a collection of parallel processors connected together in the form of a directed graph, organized such that the network structure lends itself to the problem being considered. Scientists studied human neurons and were able to identify that the impressive parallelism and interconnectivity observed in the biological systems account for the ability of the brain to perform complex pattern recognition in a few hundred milliseconds ~\cite{freeman91}.
+\acl{NN} are a collection of parallel processors connected together in the form of a directed graph, 
+organized such that the network structure lends itself to the problem being considered. Scientists 
+studied human neurons and were able to identify that the impressive parallelism and interconnectivity 
+observed in the biological systems account for the ability of the brain to perform complex pattern 
+recognition in a few hundred milliseconds~\cite{freeman91}.
 
-A biological neuron has three components important in the understanding of artificial neurons: its dendrites, soma and axon. Summed up, electric impulses known as signals are transmitted through the synaptic gap by means of a chemical process. The action of the chemical transmitter modifies the incoming signal (typically by scaling the frequency if the signals that are received) in a manner similar to the action of the weights in an Artificial Neural Network ~\cite{fausett93}. When sufficient input is received, the cell fires; that is, it transmits a signal over its axon to other cells. 
+A biological neuron has three components important in the understanding of artificial neurons: 
+dendrites, soma and axon. 
+\begin{enumerate}
+ \item Axon:  the region where a neuron sends messages to other neurons.
+ \item Dendritic tree: the area where the neuron collects input from other neurons.
+ \item Synapses: the region in which an axon from one neuron contacts the dendritic tree of another 
+ neuron. A Spike of activity in the axon causes charge to be injected into the post-synaptic neuron.
+\end{enumerate}
+Summed up, electric impulses known as signals are transmitted through 
+the synaptic gap by means of a chemical process. The action of the chemical transmitter modifies the 
+incoming signal (typically by scaling the frequency) in a manner similar to the action of the weights in 
+an Artificial Neural Network~\cite{fausett93}. When sufficient input is received, the cell fires --that is, it 
+transmits a signal over its axon to other cells. 
 
 \begin{figure}[htbp]
   \centering
@@ -127,15 +143,22 @@ A biological neuron has three components important in the understanding of artif
   \label{fig:humanNeuron}
 \end{figure}
 
-\begin{enumerate}
- \item Axon:  region where a neuron sends messages to other neurons.
- \item Dendritic tree: area where the neuron collects input from other neurons.
- \item Synapses: in this region an axon from one neuron contacts the dendritic tree of another neuron. A Spike of activity in the axon causes charge to be injected into the post-synaptic neuron.
-\end{enumerate}
+According to this definition,  \ac{NN} comprise a system where biological neurons are represented by 
+nodes and are considered a simplified representation of a processing element (unit). Additionally, 
+connections between units are represented as edges. This is interpreted as the architecture of the 
+model~\cite{fausett93}. As a way to indicate the information flow of the network arrowheads in the 
+model represent connections between nodes. A \ac{NN} model is shown in \fref{fig:neuronNet}. 
+Furthermore understanding the dynamics of the model 
+is important to recognize how similar the \ac{ML} version is to the biological nervous system. As a 
+matter of fact, humans are born with as many as 100 billion neurons that are not replaced when they 
+die. As a reflection of this, \ac{NN} are designed to be insensitive to small damage to the network. 
 
-According to this, Neural Networks comprise a system where biological neurons are represented by nodes and are considered a simplified representation of a processing element (unit). Additionally, connections between units are represented as arcs and this is therefore interpreted as the architecture of the model~\cite{fausett93}. Likewise, as a way to indicate the information flow of the network arrowheads in the model are present in connections between nodes. Furthermore understanding the dynamics of the model is important to recognize how similar the Machine Learning version is to the biological nervous system. As a matter of fact, humans are born with as many as 100 billion neurons that are not replaced when they die. As a reflection of this, Neural Networks are designed to be insensitive to small damage to the network. 
-
-When using  \ac{NN}  it is not necessary to handle correct algorithmically defined procedures that are able to take an input and represented in the correct output. Alternatively, for this type of models a collection of representative examples with the desired translation is needed. Progressively the model will adapt itself to return the desired output when presented with known inputs. As a results, \ac{NN}  have the strong characteristic of finding its  own solution to particular problems with the use of experience. 
+When using \ac{NN} it is not necessary to handle correct algorithmically defined procedures that are 
+able to take an input and represented in the correct output. Alternatively, for this type of models a 
+collection of representative examples with the desired translation is needed. Progressively the model 
+will adapt itself to return the desired output when presented with known inputs. As a results, \ac{NN}  
+have the strong characteristic of finding its  own solution to particular problems with the use of 
+experience. 
 
 \begin{figure}[htbp]
   \centering
@@ -144,11 +167,16 @@ When using  \ac{NN}  it is not necessary to handle correct algorithmically defin
   \label{fig:neuronNet}
 \end{figure}
 
-Neurons in these models can be classified according to the amount of detail and complexity of the inputs. Among these classifications one can find linear neurons, binary threshold neurons, rectified linear neurons, sigmoid neurons and finally stochastic binary neurons. For the means of the project implemented for this investigation, a model comprised with linear neurons was developed~\cite{hinton13}. 
+Neurons in these models can be classified according to the amount of detail and complexity of the 
+inputs. Among these classifications one can find linear neurons, binary threshold neurons, rectified 
+linear neurons, sigmoid neurons, and stochastic binary neurons. For the scope of this paper, a model 
+comprised with linear neurons was developed~\cite{hinton13}. 
 
-Linear neurons identified as the simplest ones are good to begin with but it also implies a limited computational power.
+Linear neurons are identified as the simplest types of neurons. It is easy to create and manipulate a 
+first \ac{NN} model with linear neurons. However,  they have a limited computational power.
 
-The latter function can take any kind of scores and turn them into proper probabilities. Proper probabilities sum to one.  Results can be interpreted in the following manner: they will be large when the scores are large and small when the scores are relatively small. 
+The results of a \ac{NN} are directly proportional to the score obtained in each iteration: they will be 
+large when the scores are large and small when the scores are relatively small. 
 Output y is a function of a bias that is in neuron b, and the sum of all its incoming connections of the activity on an input line times the synaptic weight on that same input line. Aside from this, to identify how the model is working, there are methods that measure error such as proper probabilities. In order to turn the output, also known as scores, into probability a softmax function is needed.
 
 \begin{figure}[htbp]
