@@ -18,19 +18,49 @@ Both projects were developed on a 2013 Intel Core i5 MacBook Air with macOS Sier
 %%%%
 \subsection{Learning with Linear Regression models}
 
-For the first one resources and learning material were taken from Google’s Artificial Intelligence course (Reference).  The course provides knowledge for beginners and experts as well as practice material and online classes. Given data from 1990’s housing system in California, the user is expected to build a model capable of predicting median house price at the granularity of city blocks based on one input feature. For the development for building the model it was necessary to use high level TensorFlow Estimator API and the column-oriented data analysis API, (punctuation) Pandas.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters such as batch size 
-and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to identify that model generalization is crucial when looking for a proper model. The term generalization refers to the model’s ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. In other words, from the data given pull one draw of data from a distribution (data set) then take some more data from that same distribution (test set). If the model does a good job at predicting on the test set and the data set, then we have a good indicator that the model is going to be able to generalize well onto new unseen data.  From this project it is possible to conclude that high-level APIs are a great resource for users with no prior experience because it allows them to focus on the model parameters rather than the code itself. 
+For the first project resources and learning material were taken from Google’s Artificial Intelligence course.  The course provides knowledge for beginners and experts as well as practice material and online classes. The premise was as follows: Given data from 1990’s housing system in California, the user is expected to build a model capable of predicting median house price at the granularity of city blocks based on one input feature  ~\cite{mlchrome18}. 
 
+First of all recognizing the basic functionalities of the  high level TensorFlow Estimator API and the column-oriented data analysis API Pandas was required. Starting from this, understanding the given data followed; this part was crucial because this comprises an essential foundation to build the model on. Without a clear comprehension of the data available the modeler is more prone to forget important details resulting in an ineffective model.  
+Creating a first approach to the model followed. To begin with, each data feature was classified either as categorical(text) data or numerical (number integer or float) data. 
+
+\begin{tensorflow}[caption={ads}]
+# input feature is designated
+my_feature = california_housing_dataframe[["total_rooms"]]
+
+# A numeric feature column for total_rooms is configurated.
+feature_columns = [tf.feature_column.numeric_column("total_rooms")]
+\end{tensorflow}
+
+Advancing with the project the target, as told in the premise, was defined to be the median house value. Subsequently the main characteristic of the model,  which is its linear regression approach,  was developed. Because the goal was to implement a linear regressor supervised model with optimal results, the theory mentioned above in the paper was applied.
+
+\begin{tensorflow}[caption={ads}]
+# Gradient Descent declaration
+my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.0000001)
+my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
+
+# Include the feature columns and optimizer in the configuration of the  linear regression model.
+# Learning rate is set to  0.0000001 for the Gradient Descent.
+linear_regressor = tf.estimator.LinearRegressor( feature_columns=feature_columns, optimizer=my_optimizer)
+\end{tensorflow}
+
+Later in the development of the setup the input function, which carries important information for the model training, was determined. This information includes instructions on how to batch, preprocess and shuffle data as well as how to repeat it during training. Afterwards, and making use of the previously mentioned TensorFlow API, the model was trained.
+
+\begin{tensorflow}[caption={ads}]
+_ = linear_regressor.train(
+    input_fn = lambda:my_input_fn(my_feature, targets),
+    steps=100
+)
+\end{tensorflow}
+
+After the latter process evaluating the model effectiveness was necessary. For it, predictions on data were made and errors in the project were identified. Techniques such as least Square error contributed to this understanding.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters including the batch size and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to identify that model generalization is crucial when looking for a proper model. 
+
+The term generalization refers to the model’s ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
 
 %%%%
 \subsection{Learning with Neural Networks models}
 
 The second project developed with data and guidance provided by TensorFlow where the main goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. The Model had to classify the data into one of three iris flowers: Iris setosa, Iris versicolor and Iris virginica.  As said before in this document, it was necessary to set a representation of these classifications for the model to work. Contrary to the method implemented in the first project (supervised machine learning with linear regression) to solve this problem a Deep Neural Network model was implemented. 
 
-\begin{tensorflow}[caption={ads}]
-with something at: lambda
-
-\end{tensorflow}
 
 (\url{https://www.tensorflow.org/get\_started/premade\_estimators})
 Although TensorFlow Linear Classifier Estimator was also used for this problem, it was required to use the DNNClassifier (to perform multi-class classification). (https://www.tensorflow.org/get\_started/premade\_estimators)
