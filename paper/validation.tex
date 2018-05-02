@@ -57,9 +57,9 @@ After the latter process evaluating the model effectiveness was necessary. For i
 The term generalization refers to the model’s ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
 
 %%%%
-\subsection{Learning with Neural Networks models}
+\subsection{Learning with Neural Network models}
 
-The project regarding Neural Networks was developed using content provided by TensorFlow~\cite{tensor18}. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
+The project regarding Neural Networks was developed using content provided by TensorFlow~\cite{tensor18} available as an open resource. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
 As mentioned before in this document, models are not able to directly receive objects as information, thus the first step towards completion was setting a representation of each flower for the model to understand. 
 
 \begin{figure}[htbp]
@@ -69,7 +69,18 @@ As mentioned before in this document, models are not able to directly receive ob
   \label{fig: rep}
 \end{figure}
 
-Although TensorFlow Linear Classifier Estimator was also applicable for this problem, it was required to use the DNNClassifier to perform multi-class classification~\cite{tensor18}. Because the information volume was not very large it was appropriate to develop a four layer model. The two outer layers correspond to the indispensable input and output layers, thus it remains two hidden layers in the net. Continuing with the model development, as implemented in the project above, the first steps to achieve a good model is creating the input functions, and defining the model's feature columns. 
+Although TensorFlow Linear Classifier Estimator was also applicable for this problem, it was required to use the DNNClassifier to perform multi-class classification~\cite{tensor18}. Because the information volume was not very large it was appropriate to develop a four layer model. The two outer layers correspond to the indispensable input and output layers, as a result  two hidden layers remained in the net. Specifically entering into details concerning the Neural Network development, the DNNClassifier  provided accesible tools to model the net.
+
+\begin{tensorflow}[caption={ads}]
+# Net contains 2 hidden layers with 10 nodes each.
+classifier = tf.estimator.DNNClassifier(
+    feature_columns=my_feature_columns,
+    hidden_units=[10, 10],
+# The model must choose between 3 classes which represent each flower.
+    n_classes=3)
+\end{tensorflow}
+
+Continuing with the model development, as implemented in the project above, the first steps to achieve a good model was creating the input functions, and defining the model's feature columns. 
 
 \begin{tensorflow}[caption={ads}]
 #Input function definition
@@ -82,7 +93,7 @@ def input_evaluation_set():
     return features, labels
 \end{tensorflow}
 
-Interestingly the results obtained by the model classification should sum up to one. In other words, the model was designed to respond to each input by deciding in which proportion the data corresponds to one of the three available flowers. 
+Interestingly the results obtained by the model's classification where expected to sum up to one. In other words, the model was designed to respond to each input by deciding in which proportion the data corresponds to one of the three available flowers. 
 
 \begin{enumerate}
  \item 0.08 for Iris Setosa
@@ -90,18 +101,7 @@ Interestingly the results obtained by the model classification should sum up to 
  \item 0.90 for Iris Virginica
 \end{enumerate}
 
-From the above example it is possible to conclude that the model determined that there was a 90 percent probability that the data corresponded to an Iris Virginica. 
-Specifically entering into details concerning the Neural Network development, the DNNClassifier mentioned above provided accesible tools to create the net.
-
-\begin{tensorflow}[caption={ads}]
-# Net contains 2 hidden layers with 10 nodes each.
-classifier = tf.estimator.DNNClassifier(
-    feature_columns=my_feature_columns,
-    hidden_units=[10, 10],
-# The model must choose between 3 classes which represent each flower.
-    n_classes=3)
-\end{tensorflow}
-Following this, the concluding process was developed in a similar manner to the first project. Namely, training the model and evaluating proceeded. Just like in the first  application, training was implemented using the Estimators train method. 
+From the above example it is possible to conclude that the model determined a 90 percent probability of the data corresponding to an Iris Virginica.   Following this, the closing section of the process was developed in a similar manner to the first project. Namely, training the model and evaluating proceeded. Just like in the first  application, training was implemented using the Estimators train method. 
 
 %%%%
 \subsection{Experiments Analysis}
