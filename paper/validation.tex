@@ -105,12 +105,8 @@ From the above example it is possible to conclude that the model determined a 90
 
 %%%%
 \subsection{Experiments Analysis}
-\authorcomment[missing]{}{Why is better to to linear regression than neural networks for supervised learning applications, and viceversa}
 
-For both the Housing and Flower problems models were trained and predictions were made.  From here evaluations were made concluding that indeed linear regression models present useful solutions while keeping things simple. 
-
-The second project developed with data and guidance provided by TensorFlow where the main goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. The Model had to classify the data into one of three iris flowers: Iris setosa, Iris versicolor and Iris virginica.  As said before in this document, it was necessary to set a representation of these classifications for the model to work. Contrary to the method implemented in the first project (supervised machine learning with linear regression) to solve this problem a Deep Neural Network model was implemented. 
-
+For both, the Housing and Flower problems, models were trained and predictions were made. When working with information such as the California Housing system, where there is a large amount of data classified in different ways, it was possible to determine empirically that Linear Regression supervised Machine Learning was the most appropriate way to recover a certain trait present in the data. This statement is drawn from the fact that no previous outcome was determined for each information used in the model, thus adjusting Hyperparameters was the only resource available for the user to shape the model.  From here evaluations were made concluding that indeed Linear Regression models present useful solutions while keeping the process accessible and simple for users that are starting to work with \ac{ML}.  On the other hand information accesible for the second project was different resulting in the implementation of a distinct form of \ac{ML}. In this case there was a set of characteristics in which information was supposed to fit in, based on this a Neural Network approach was more feasible. The complexity of the model's input reflected how the Network was modeled and how deep the layers were. Additionally, thanks to probability provided by the model classifying data becomes a process in which results over time sharpen the classification precision. 
 
 %%%%
 \subsection{Threads to Validity}
