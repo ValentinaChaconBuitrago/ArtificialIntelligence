@@ -52,14 +52,14 @@ _ = linear_regressor.train(
 )
 \end{tensorflow}
 
-After the latter process evaluating the model effectiveness was necessary. For it, predictions on data were made and errors in the project were identified. Techniques such as least Square error contributed to this understanding.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters including the batch size and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to identify that model generalization is crucial when looking for a proper model. 
+After the latter process evaluating the model effectiveness was necessary. For it, predictions on data were made and errors in the project were identified. Techniques such as least Square error contributed to this understanding.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters including the batch size and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to determine that model generalization is crucial when looking for a proper model. 
 
-The term generalization refers to the model’s ability to adapt properly to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
+The term generalization refers to the model’s ability to adapt conveniently to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
 
 %%%%
 \subsection{Learning with Neural Network models}
 
-The project regarding Neural Networks was developed using content provided by TensorFlow~\cite{tensor18} available as an open resource. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
+The project regarding Neural Networks was developed using content provided by TensorFlow's website~\cite{tensor18}. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
 As mentioned before in this document, models are not able to directly receive objects as information, thus the first step towards completion was setting a representation of each flower for the model to understand. 
 
 \begin{figure}[htbp]
@@ -69,7 +69,7 @@ As mentioned before in this document, models are not able to directly receive ob
   \label{fig: rep}
 \end{figure}
 
-Although TensorFlow Linear Classifier Estimator was also applicable for this problem, it was required to use the DNNClassifier to perform multi-class classification~\cite{tensor18}. Because the information volume was not very large it was appropriate to develop a four layer model. The two outer layers correspond to the indispensable input and output layers, as a result  two hidden layers remained in the net. Specifically entering into details concerning the Neural Network development, the DNNClassifier  provided accesible tools to model the net.
+Although TensorFlow Linear Classifier Estimator was also applicable for this problem, it was required to use the DNNClassifier to perform multi-class classification~\cite{tensor18}. Because the information volume was not very large it was appropriate to develop a four layer model. The two outer layers correspond to the indispensable input and output layers, as a result  two hidden layers remained in the net. Specifically entering into details concerning the Neural Network development, the DNNClassifier  provided accesible tools to model the structure of the net.
 
 \begin{tensorflow}[caption={ads}]
 # Net contains 2 hidden layers with 10 nodes each.
@@ -80,7 +80,7 @@ classifier = tf.estimator.DNNClassifier(
     n_classes=3)
 \end{tensorflow}
 
-Continuing with the model development, as implemented in the project above, the first steps to achieve a good model was creating the input functions, and defining the model's feature columns. 
+Continuing, as implemented in the project above, the first steps to achieve a good model was creating the input functions, and defining the model's feature columns. 
 
 \begin{tensorflow}[caption={ads}]
 #Input function definition
