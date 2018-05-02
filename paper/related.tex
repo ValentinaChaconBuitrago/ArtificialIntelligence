@@ -33,40 +33,66 @@ where:
  \item Bias ($b$): is the offsets of the predictions made. 
 \end{enumerate}
 
-The Model defines the connection between features and labels. In other words, it maps examples to predict labels. This is a recurrent process where it progressively learns the interrelation between features and labels. As a result the model resolves good weight and bias for all values from the given examples.  Over the fact that the user modifies the parameters of the model it is imperative to measure how far predictions are from reality.  A common way to identify the error is through the Least Square errors technique. Although there are other methods this one results attractive when the user is beginning to interact with Supervised Machine Learning because the difference between an incorrect target and the original value will be largely evident and squaring it will make it even larger. This way the errors in a single example using the model will be easier to identify, and thus more apparent to improve and modify.\fref{fig:L2loss equation} shows the equation used to calculate the Least Square errors in the model.
+The linear regression model defines the relation between features and labels. That is, it maps 
+input examples to predict labels. This is a recursive process where the model progressively learns 
+the interrelation between features and labels. As a result the model resolves the appropriate weight 
+and bias for all values from the given examples. 
+Taking into account that users modify the model parameters, it is imperative to measure the difference 
+between predicted values and obtained values.  A common way to identify the error is through the 
+\emph{least square errors technique}. This error model is most appropriate to use when users begin 
+to interact with \ac{SML} models, because the difference between an incorrect target and the original 
+value will be made largely evident. Using this error model,  prediction errors in a single example will 
+be easier to identify, and thus more apparent to improve and modify. \fref{eq:L2loss equation} shows 
+the equation used to calculate the least square errors in the model.
 
 \begin{equation} \label{eq:L2loss equation}
 \displaystyle
 S = \sum_{i=0}^n (y_i - h(x_i))^2
 \end{equation}
 
-
-
-Where $h(x)$ represents the corresponding estimated value of $x$~\cite{rish15}.
-The aim is to reach the minimum loss of the model; this goal is achievable through different approaches. For the means of this paper only two will be mentioned. The first one, known as Gradient Descent is the derivate of the least square error result and together with the weight and bias for a given example informs how loss changes for a given example. This way it is possible to adjust the model iteratively until learning weights and bias become the lowest possible. 
-
-In the other hand there is the Stochastic Gradient Descent \ac{SGD} where the process is repeated for each individual example.
+In this model $h(x)$ represents the corresponding estimated value of $x$~\cite{rish15}.
+The objective of the model is to reach the minimum loss; this goal is achievable through different 
+approaches. In this paper we present only two of such approaches. The \emph{gradient descent} 
+approach, is the derivate of the least square error result, and together with the weight and bias for a 
+given example informs how loss changes for a given example. With this information, it is possible to 
+adjust the model iteratively until learning weights and bias become as small as possible. 
+The \emph{\ac{SGD}} approach, repeats the process of the gradient descent for each individual 
+example.
 
 \begin{equation} \label{eq:SGD}
 (y - h(x))^2
 \end{equation}
 
+\fref{eq:SGD} shows the \ac{SGD} approach, in which the gradient is calculated one example at a 
+time. As a result, initial values for the bias and weight are not relevant. However most of the time it is 
+appropriate to begin with $0$ for both values.
 
-In this case equation~\ref{eq:SGD} portraits the case in which the gradient is calculated one example at a time. As a result, initial values for b and w are not relevant. However most of the time it is appropriate to begin with 0 in both values.
-
-Both Gradient descent algorithms multiply the gradient by a scalar known as the learning rate (sometimes called step size) to determine the next point.  There are several variations to the Stochastic Gradient Descent, and in all of them it is possible to set the learning rate.  Moreover, the learning rate parameter tells the optimizer how for to move the weights in the direction of the gradient for a mini batch. Having a low learning rate is decisive because it provides a more reliable training but it also means that optimization will take a lot of time because the steps towards the minimum loss of the function are especially small. In the other hand, if the learning rate is high it is possible that the training doesn’t converge and might even diverge.  Weight changes can become so big that the optimizer overshoots the minimum and makes the loss worse. The information presented before arises a new question: How can the modeler identify the correct learning rate for the process? 
-As delusive as it might be, the first method with which one can select the correct learning rate is the Naïve approach. This consists of trial and error, start with any learning rate and from there start modifying it according to the received results. 
+Both gradient descent algorithms multiply the gradient by a scalar known as the learning rate 
+(sometimes called step size) to determine the next prediction point. There are several variations to 
+the \ac{SGD}, and in all of them it is possible to set the learning rate.  Moreover, the learning rate 
+parameter tells the optimizer how to move the weights in the direction of the gradient for a mini batch. 
+Having a low learning rate is decisive, because it provides a more reliable training, at the cost of 
+having longer optimization time, as the steps towards the minimum loss of the function are especially 
+small. If the learning rate is high it is possible that the training diverges rather than converging. 
+Weight changes can become so big that the optimizer overshoots the minimum and makes the loss 
+worse. The information presented before rises a new question: How can the modeler identify the 
+correct learning rate for the process? 
+As delusive as it might be, the first method with which one can select the correct learning rate is the 
+Na\"ive approach. This consists of trial and error predictions. Start with any learning rate and from 
+there begin to modify the learning rate according to the obtained results. 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{images/linearGraph}
+  \includegraphics[width=0.8\textwidth]{images/linearGraph}
   \caption{ The results plotted in the graph suggest that there might be a better line, which fits more data, thus resulting in a prediction model that has a greater accuracy.}
   \label{fig:linearGraph}
 \end{figure}
 
 
-It is recommended to start with a large value such as 0.1 and from there exponentially lower the values (0.1,0.01,0.001).
-The second method created by Leslie N. Smith published in her paper Cyclical learning rates~\cite{leslie15} consists of an initial low learning rate that is then increased exponentially when a new batch comes in.
+It is recommended to start with a large value such as 0.1 and from there exponentially lower the 
+values (0.1,0.01,0.001).
+~\citet{leslie15}, describes a second method, which consists of an initial low learning rate that is then 
+increased exponentially when a new batch comes in.
 The ideal learning rate in one-dimension is $\frac{1}{f(x)^n}$ (the inverse of the second derivate of 
 $f(x)$ at $x$). The ideal learning rate for two or more dimensions is the inverse of the Hessian (the 
 matrix of second partial derivates)~\cite{leslie15}.
@@ -75,8 +101,17 @@ matrix of second partial derivates)~\cite{leslie15}.
 %%%%
 \paragraph{Applications}
 
-Due to the simplicity of linear regression models applications revolve around prediction and are widely used in a broad group of industries that include: business, economics, medicine, among others. That is to say that the best uses to linear regression supervised models are given when the goal is to analyze data and from it obtain possible outcomes. As a matter of fact this branch of \ac{ML} is appropriate for predictions regarding prices, such as real state or banking, estimating salaries and predicting enterprise areas performance. Other uses for this implementation include traffic prediction, recommending related products for clients, and determining medical recovery time~\cite{grandeur17}. As these examples tell, a broad area of many problems can be solved using this model, Dr. Robin Hanson once quoted “Good CS expert says: Most firms that think they want advanced AI/ML really just need linear regression on cleaned-up data.” As if it was not useful enough, this model is able to blend with more sophisticated techniques that provide more accurate results for the mentioned applications. 
-
+Due to the simplicity of linear regression models applications revolve around prediction and are 
+widely used in a broad set of domains (\eg business, economics, or medicine). That is to say that the 
+best uses to linear regression supervised models are given when the goal is to analyze to obtain 
+possible outcomes. As a matter of fact, this branch of \ac{ML} is appropriate for predictions regarding 
+prices, such as real state or banking, estimating salaries and predicting enterprise areas performance. 
+Other uses for this implementation include traffic prediction, recommending related products for 
+clients, and determining medical recovery time~\cite{grandeur17}. As these examples show, a broad 
+area of  problems can be solved using this model, Dr. Robin Hanson once quoted “Good CS expert 
+says: Most firms that think they want advanced AI/ML really just need linear regression on cleaned-up 
+data.” More over, this model is able to blend with more sophisticated techniques that provide more 
+accurate results for the mentioned applications. 
 
 
 %%%
