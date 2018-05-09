@@ -8,21 +8,22 @@
 According to Encyclopedia Britannica, \ac{AI} is understood as the ability of a computer or 
 computer-controlled machine to perform tasks associated with intelligent beings. While the early 
 idea of \ac{AI} spawns from the work on \textit{artificial neurons} and the later development of
-reasoning programming languages (\eg Prolog). \ac{AI} only began gaining proper recognition 
-in the 1980's, with the rise of expert systems~\cite{russel09}.  Recently, there has been a revival of 
-\ac{AI}, partly due to the great amount of data available, collected through different devices, the 
-great algorithmic development, and the ever growing computing power in domains as \ac{HPC} or 
-Cloud. Different challenges and learning goals have risen in the development of \ac{AI} 
-projects~\cite{russel09}. As a matter of fact, it is no longer possible to refer to \ac{AI} as a whole. 
-Rather, it is necessary to take into account the type of \emph{reasoning}, \emph{learning}, or 
-\emph{model} used by the machine. As is, there are two major categories in which \ac{AI} 
-approaches can be classified:
+reasoning programming languages (\eg Prolog) in the late 1950's. \ac{AI} only began gaining proper 
+recognition during the 1980's, with the rise of expert systems~\cite{russel09}.  Recently, there has 
+been a revival of \ac{AI}, partly due to the great amount of data available, collected through different 
+sensors and devices, the 
+great algorithmic development, and the ever growing computing power, in domains as \ac{HPC} or 
+Cloud. With different challenges and learning goals have risen in the development of \ac{AI} 
+projects~\cite{russel09}, the domain has grown to the point it is no longer possible to refer to \ac{AI} 
+as a whole. Rather, it is necessary to take into account the type of \emph{reasoning}, 
+\emph{learning}, or thinking \emph{model} used by the machine. As is, there are two major categories 
+in which \ac{AI} approaches can be classified:
 \begin{enumerate*}[label=(\arabic*)]
 \item applied systems, and
 \item general systems.
 \end{enumerate*}
 
-Currently one of the most sought after question for \ac{AI} application is that of \emph{pattern 
+Currently one of the most sought after question for applications of \ac{AI} is that of \emph{pattern 
 recognition} from a data set. This is due to the requirements of current systems to process large 
 volumes of data, and the exploitation of such data to improve the quality of the system, or to offer 
 personalized behavior. Examples of such systems can be found in the domains of 
@@ -62,12 +63,13 @@ results. \ac{ML} techniques are categorized as:
 \end{figure}
 
 \fref{fig:ai-categorization} shows the existing \ac{ML} approaches and their relations. Each of these 
-models presents special characteristics that enhance results and provide users with tools for creating 
-optimal models emerging in effective results.  Nevertheless, they each pursue different solutions for  
-\ac{ML} problems, and sometimes they might not even work properly for all applications. 
+pursue a different approaches to solve \ac{ML} problems. As a consequence, the techniques might 
+not all provide optimal solutions for every types of problems. Therefore, each technique should use 
+its associated tools according to the characteristics to the problem to solve, in order to optimize the 
+obtained results.
 
-This paper offers an overview of the field of \ac{ML}, presenting the necessary background for its 
-main representative techniques, \ac{SML}, and \ac{NN} (\fref{sec:related}). 
+This paper offers an introductory overview of the field of \ac{ML}, presenting the necessary 
+background for its main representative techniques, namely, \ac{SML}, and \ac{NN} (\fref{sec:related}). 
 \ac{SML} models produce useful predictions of unseen data by combining inputs, hence resulting in 
 an appropriate way to classify information. \ac{NN} are considered as the leading method to achieve 
 proper outcomes when working with patter recognition. \ac{NN} are trained based on data that has 
@@ -76,8 +78,8 @@ examples. Patterns are identified, if the current exploration  correlates with p
 labels~\cite{mit17}. 
 
 For each of these models we present an example application, characterizing the main 
-requirements to apply each technique (\fref{sec:validation}). For the development of the applications 
-we use the TensorFlow Estimator API and the column-oriented data analysis API Pandas.
+requirements to apply the corresponding technique (\fref{sec:validation}). For the development of the 
+applications we use the TensorFlow Estimator API and the column-oriented data analysis API Pandas.
 We identified that supervised linear regression models allow users to understand the basic 
 applications while fulfilling their data classification objective. Furthermore, we were able to recognize 
 \ac{NN} as a good source to classify patters in an effective and approachable way. 
