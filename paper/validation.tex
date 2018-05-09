@@ -6,55 +6,115 @@
 \section{Validation}
 \label{sec:validation}
 
-This section provides empirical experimentation of the \ac{ML} techniques introduced in the previous section. Two application for pattern recognition were selected to execute each of the techniques. The first application uses previously collected housing system to learn and predict house market prices. The second application, uses pattern recognition for the identification of object (flowers) in images.
+This section provides empirical experimentation of the \ac{ML} techniques introduced in the previous 
+section. Two application for pattern recognition were selected to execute each of the techniques. The 
+first application uses existing housing system data to learn and predict market prices. The second 
+application, uses pattern recognition for the identification of objects (flowers) in an image.
 
 %%%%
-\subsection{Executions Environment}
+\subsection{Execution Environment}
 
-As the first project data and guidance was provided by Google's Machine Learning Crash course~\cite{mlchrome18}  it was run directly on the Google Chrome browser using their Colaboratory platform. Nonetheless, it is possible to execute the program offline which requires the user to set up a local Datalab environment by installing Docker~\cite{docker18}.   
-On the other hand, the environment in which the Neural Network was developed for the second  project is TensorFlow. More precisely TensorFlow 1.0 running in a Jupiter Notebook with python 3 accessed through Anaconda. 
-Both projects were developed on a 2013 Intel Core i5 MacBook Air with macOS Sierra version 10.12.6.
+The first experiment used data provided by Google's Machine Learning Crash 
+course~\cite{mlchrome18}. The experiment was run using TensorFlow directly on the Google 
+Chrome browser using google's collaboration platform. 
+%Nonetheless, it is possible to execute the program offline which requires the user to set up a local Datalab environment by installing Docker~\cite{docker18}.   
+The second experiment was developed using TensorFlow version 1.0 running in a Jupiter 
+Notebook with python 3 accessed through Anaconda. 
+Both experiments were run on a 2013 Intel Core i5 MacBook Air with macOS Sierra version 10.12.6.
 
 %%%%
 \subsection{Learning with Linear Regression}
 
-For the first project resources and learning material were taken from Google’s Artificial Intelligence course.  The course provides knowledge for beginners and experts as well as practice material and online classes. The premise was as follows: Given data from 1990’s housing system in California, the user is expected to build a model capable of predicting median house price at the granularity of city blocks based on one input feature  ~\cite{mlchrome18}. 
+For the first experiment resources and learning material were taken from Google’s Artificial 
+Intelligence course. The course provides knowledge for beginners and experts, as well as practice 
+material and online classes. The experiments uses data from 1990’s housing system in California. 
+Based on this data, we want to build a model capable of predicting median house value at the 
+granularity of city blocks based on a specific feature from the available data set (\eg median age, 
+median value)~\cite{mlchrome18}. 
 
-First of all recognizing the basic functionalities of the  high level TensorFlow Estimator API and the column-oriented data analysis API Pandas was required. Starting from this, understanding the given data followed; this part was crucial because this comprises an essential foundation to build the model on. Without a clear comprehension of the data available the modeler is more prone to forget important details resulting in an ineffective model.  
-Creating a first approach to the model followed. To begin with, each data feature was classified either as categorical(text) data or numerical (number integer or float) data. This feature columns describe 
-how the model should use raw input data from the features dictionary~\cite{tensor18}.
-\begin{tensorflow}[caption={ads}]
-# input feature is designated
-my_feature = california_housing_dataframe[["total_rooms"]]
+When starting a \ac{ML} project, the most important part is to understand the available data.
+Taking advantage from data insights it is possible to obtain a more accurate model. The housing data 
+(\ie \emph{data frame}) used in this experiment is composed of nine features,\footnote{\url{https://storage.googleapis.com/mledu-datasets/california_housing_train.csv}} namely: 
+\begin{enumerate*}[label=(\arabic*)]
+\item \tensorcode{longitude},
+\item \tensorcode{latitude},
+\item median age (\tensorcode{housing_median_age}),	
+\item total number of rooms (\tensorcode{total_rooms}),	
+\item total number of bedrooms (\tensorcode{total_bedrooms}),
+\item \tensorcode{population},	
+\item \tensorcode{households},
+\item median income (\tensorcode{median_income}), and
+\item	median house value (\tensorcode{median_house_value}).
+\end{enumerate*}
+These features are classified according to their data type --that is, categorical (\eg text), or numeric 
+(\eg number, integer, float). Features describe how the model should use raw input data from a 
+features dictionary. Raw data, in TensorFlow, is processed through \emph{Estimators}, exposed as 
+the high-level API of the language~\cite{tensor18}. \fref{lst:feature-configuration} shows the definition 
+of a desired input feature, and its classification as a numeric feature, using the TensorFlow high-level 
+API.
 
-# A numeric feature column for total_rooms is configurated.
-feature_columns = [tf.feature_column.numeric_column("total_rooms")]
+\begin{tensorflow}[
+	label={lst:feature-configuration},
+	caption={Feature definition and classification}]
+ # input feature is designated
+ my_feature = california_housing_dataframe[["total_rooms"]]
+
+ # A numeric feature column for total_rooms is configured.
+ feature_columns = [tf.feature_column.numeric_column("total_rooms")]
 \end{tensorflow}
 
-Advancing with the project, the target as told in the premise, was defined to be the median house value.  Subsequently the main characteristic of the model,  which is its linear regression approach,  was developed. Because the goal was to implement a linear regressor supervised model with optimal results, the theory mentioned above in the paper was applied.
+The goal for this experiment is to estimate the median house value based on historic data, available to 
+users. These characteristics suggest to use the linear regression model for the estimation.
+As explained in \fref{sec:linear-regression}, we create the linear regression model 
+(\fref{ln:linear-model}) based on the gradient  decent (Lines \ref{ln:gradient-init}-\ref{ln:gradient-end}) as 
+shown in \fref{lst:lrm}.
 
-\begin{tensorflow}[caption={ads}]
-# Gradient Descent declaration
-my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.0000001)
-my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
+\begin{tensorflow}[numbers=left,
+	label={lst:lrm},
+	caption={Generation of the linear regression model}]
+ #Gradient Descent declaration
+ my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.0000001) ` \label{ln:gradient-init} `
+ my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0) 
+ ` \label{ln:gradient-end} `
 
-# Include the feature columns and optimizer in the configuration of the  linear regression model.
-# Learning rate is set to  0.0000001 for the Gradient Descent.
-linear_regressor = tf.estimator.LinearRegressor( feature_columns=feature_columns, optimizer=my_optimizer)
+ #Include the feature columns and optimizer in the configuration of the  linear regression model.
+ #Learning rate is set to  0.0000001 for the Gradient Descent
+ linear_regressor = tf.estimator.LinearRegressor(feature_columns=feature_columns, optimizer=my_optimizer) ` \label{ln:linear-model} `
 \end{tensorflow}
 
-Later in the development of the setup the input function, which carries important information for the model training, was determined. This information includes instructions on how to batch, preprocess and shuffle data as well as how to repeat it during training. Afterwards, and making use of the previously mentioned TensorFlow API, the model was trained.
+As with other \ac{ML} techniques, in order to make a prediction, the model needs to be trained using 
+available data. In order to train the model, it is necessary to batch, preprocess, and shuffle the data. 
+This is to assure that the model will not be trained on biased data. 
+Training a linear regression model requires a function (\tensorcode{input_fn} in 
+\fref{lst:training}) characterized by the feature to make the prediction (\tensorcode{my_feature}), as 
+well as the targets (of the estimation). Finally developers are required to define the number of steps 
+in which the model will be trained.
 
-\begin{tensorflow}[caption={ads}]
-_ = linear_regressor.train(
+\fref{lst:training} shows the training definition for the the housing system data. in this example we 
+train the model for 100 steps, using as input feature \tensorcode{total_rooms}, defined in 
+\fref{lst:feature-configuration}. 
+
+\begin{tensorflow}[
+	label={lst:training},
+	caption={Model training}]
+ _ = linear_regressor.train(
     input_fn = lambda:my_input_fn(my_feature, targets),
     steps=100
-)
+ )
 \end{tensorflow}
 
-After the latter process evaluating the model effectiveness was necessary. For it, predictions on data were made and errors in the project were identified. Techniques such as least Square error contributed to this understanding.  In order to obtain proper results it was necessary to randomize data and modify the Models Hyperparameters including the batch size and learning rate to find a good fit with low loss. Moreover, from the results obtained it was possible to determine that model generalization is crucial when looking for a proper model. 
+The decision of using 100 training steps the outcome of the model fitting process, where developers 
+are required to fine tune the model parameters to assure accurate predictions. During training, it is 
+required to measure the effectiveness of the model. If prediction errors are identified, for example 
+using the least square error, it is required to adjust the model \emph{hyperparameters}. That is, 
+modifying the batch size, learning rate, or number of steps, to find a good fit with low prediction error. 
 
-The term generalization refers to the model’s ability to adapt conveniently to new, previously unseen data, drawn from the same distribution as the one used to create the model.  It allows for all training examples to be correctly classified. If the model works well with predictions on the test set and the data set, then there is a good indicator on how well the model is going to be able to generalize onto new unseen data.  
+During the fitness process, the model should be fit to foster \emph{generalization}. 
+Generalization refers to the model’s ability to adapt to new, previously unseen data, drawn from the 
+same distribution as the one used to create the model.  Generalization allows for all training examples 
+to be correctly classified. If the model works well with predictions on the test set and the data set, then 
+this is a good indicator about how the model is going to perform when dealing with new unseen data.  
+
 
 %%%%
 \subsection{Learning with Neural Networks}
@@ -107,6 +167,9 @@ From the above example it is possible to conclude that the model determined a 90
 \subsection{Experiments Analysis}
 
 For both, the Housing and Flower problems, models were trained and predictions were made. When working with information such as the California Housing system, where there is a large amount of data classified in different ways, it was possible to determine empirically that Linear Regression supervised Machine Learning was the most appropriate way to recover a certain trait present in the data. This statement is drawn from the fact that no previous outcome was determined for each information used in the model, thus adjusting Hyperparameters was the only resource available for the user to shape the model.  From here evaluations were made concluding that indeed Linear Regression models present useful solutions while keeping the process accessible and simple for users that are starting to work with \ac{ML}.  On the other hand information accesible for the second project was different resulting in the implementation of a distinct form of \ac{ML}. In this case there was a set of characteristics in which information was supposed to fit in, based on this a Neural Network approach was more feasible. The complexity of the model's input reflected how the Network was modeled and how deep the layers were. Additionally, thanks to probability provided by the model, classifying data becomes a process in which results over time sharpen the classification precision. 
+
+
+Practitioners using \ac{ML} for a particular project, should only be concerned with the high-level API, providing out-of-the-box estimators appropriate to the specific \ac{ML} technique to use.
 
 %%%%
 %\subsection{Threads to Validity}
