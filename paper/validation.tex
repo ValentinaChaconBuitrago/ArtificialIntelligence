@@ -29,7 +29,7 @@ For the first experiment resources and learning material were taken from Google�
 Intelligence course. The course provides knowledge for beginners and experts, as well as practice 
 material and online classes. The experiments uses data from 1990’s housing system in California. 
 Based on this data, we want to build a model capable of predicting median house value at the 
-granularity of city blocks based on a specific feature from the available data set (\eg median age, 
+granularity of city blocks based on a specific feature from the available data set (\eg median house age, 
 median value)~\cite{mlchrome18}. 
 
 When starting a \ac{ML} project, the most important part is to understand the available data.
@@ -83,8 +83,8 @@ shown in \fref{lst:lrm}.
 \end{tensorflow}
 
 As with other \ac{ML} techniques, in order to make a prediction, the model needs to be trained using 
-available data. In order to train the model, it is necessary to batch, preprocess, and shuffle the data. 
-This is to assure that the model will not be trained on biased data. 
+available data. In order to train the model, it is necessary to \emph{batch}, \emph{preprocess}, and 
+\emph{shuffle} the data.  This is to assure that the model will not be trained on biased data. 
 Training a linear regression model requires a function (\tensorcode{input_fn} in 
 \fref{lst:training}) characterized by the feature to make the prediction (\tensorcode{my_feature}), as 
 well as the targets (of the estimation). Finally developers are required to define the number of steps 
@@ -103,11 +103,12 @@ train the model for 100 steps, using as input feature \tensorcode{total_rooms}, 
  )
 \end{tensorflow}
 
-The decision of using 100 training steps the outcome of the model fitting process, where developers 
+The decision of using 100 training steps is the outcome of the model fitting process, where developers 
 are required to fine tune the model parameters to assure accurate predictions. During training, it is 
 required to measure the effectiveness of the model. If prediction errors are identified, for example 
 using the least square error, it is required to adjust the model \emph{hyperparameters}. That is, 
 modifying the batch size, learning rate, or number of steps, to find a good fit with low prediction error. 
+Normally, hyperparameters will change from project to project.
 
 During the fitness process, the model should be fit to foster \emph{generalization}. 
 Generalization refers to the model’s ability to adapt to new, previously unseen data, drawn from the 
@@ -117,34 +118,55 @@ this is a good indicator about how the model is going to perform when dealing wi
 
 
 %%%%
-\subsection{Learning with Neural Networks}
+\subsection{Learning with \acl{NN}}
 
-The project regarding Neural Networks was developed using content provided by TensorFlow's website~\cite{tensor18}. The goal was to classify flowers based on a dataset containing plant measurements such as sepal length, sepal width, petal length and petal width. In more detail, the Model had to classify the data into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris Virginica. 
-As mentioned before in this document, models are not able to directly receive objects as information, thus the first step towards completion was setting a representation of each flower for the model to understand. 
+For the second experiment we developed a pattern recognition \ac{ML} algorithm. in particular the 
+goal of this project is to accurately classify flowers detected on an image, based on a dataset of 
+plant measurements, such as: sepal length, sepal width, petal length and petal width. Specifically, 
+the model should classify flowers into one of three Iris flowers: Iris Setosa, Iris Versicolor and Iris 
+Virginica. This experiment is developed using a \ac{NN}, using the content provided in TensorFlow's 
+website~\cite{tensor18}. 
+ 
+Similar to the linear regression model, in order to use \ac{NN} in pattern recognition, it is necessary 
+to provide a representation of the the entities to recognize as a data frame. \fref{fig:object-rep} shows 
+the representation of the three types of flowers to recognize, characterized by the length and width of 
+their sepal and petal.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{images/table}
   \caption{Data representation used for modeling (taken from~\cite{tensor18})}
-  \label{fig: rep}
+  \label{fig:object-rep}
 \end{figure}
 
-Although TensorFlow Linear Classifier Estimator was also applicable for this problem, it was required to use the DNNClassifier to perform multi-class classification~\cite{tensor18}. Because the information volume was not very large it was appropriate to develop a four layer model. The two outer layers correspond to the indispensable input and output layers, as a result  two hidden layers remained in the net. Specifically entering into details concerning the Neural Network development, the DNNClassifier  provided accesible tools to model the structure of the net.
+\ac{NN} models are constructed based on the layers of neurons, the number of layers is determined 
+by the data available to characterized a particular element. 
+For the flower classification model, we used four layers. The two outer layers correspond to the 
+indispensable input and output layers, while the two additional layers remain hidden in the net. 
+The specific structure of the net is defined using the \tensorcode{DNNClassifier}, shown in 
+\fref{lst:nn-definition}.  
+The definition of the classifier requires the specification of the model's feature columns, hidden layers, 
+and the different types of elements to classify.
 
-\begin{tensorflow}[caption={ads}]
-# Net contains 2 hidden layers with 10 nodes each.
-classifier = tf.estimator.DNNClassifier(
+\begin{tensorflow}[
+	label={lst:nn-definition},
+	caption={Neural network definition}]
+ #Net contains 2 hidden layers with 10 nodes each.
+ classifier = tf.estimator.DNNClassifier(
     feature_columns=my_feature_columns,
     hidden_units=[10, 10],
-# The model must choose between 3 classes which represent each flower.
+ #The model must choose between 3 classes which represent each flower.
     n_classes=3)
 \end{tensorflow}
 
-Continuing, as implemented in the project above, the first steps to achieve a good model was creating the input functions, and defining the model's feature columns. 
+Additionally, we define an input function, shown in \fref{lst:input-definition}, specifying the features of 
+the objects to recognize (following the same declaration of features as the initial data representation).
 
-\begin{tensorflow}[caption={ads}]
-#Input function definition
-def input_evaluation_set():
+\begin{tensorflow}[
+	label={lst:input-definition},
+	caption={Input definition}]
+ #Input function definition
+ def input_evaluation_set():
     features = {'SepalLength': np.array([6.7, 5.3, 4.4]),
                 'SepalWidth':  np.array([3.4., 4.2, 3.1]),
                 'PetalLength': np.array([5.6, 3.3, 4.8]),
@@ -153,30 +175,57 @@ def input_evaluation_set():
     return features, labels
 \end{tensorflow}
 
-Interestingly the results obtained by the model's classification where expected to sum up to one. In other words, the model was designed to respond to each input by deciding in which proportion the data corresponds to one of the three available flowers. 
+Each of the input values is used to estimate it classification with respect to the original data model. 
+This classification is described as a proportion of similarity for each of the classifiers (\ie types of 
+elements defining the classes) representing how much the data relates to each of the classifiers.
 
+For example, in the described for the input information in \fref{lst:input-definition}, the similarity 
+proportion, for each type of flower, is that shown hereafter
 \begin{enumerate}
  \item 0.08 for Iris Setosa
  \item 0.02 for Iris Versicolor
  \item 0.90 for Iris Virginica
 \end{enumerate}
 
-From the above example it is possible to conclude that the model determined a 90 percent probability of the data corresponding to an Iris Virginica.   Following this, the closing section of the process was developed in a similar manner to the first project. Namely, training the model and evaluating proceeded. Just like in the first  application, training was implemented using the Estimators train method. 
+Based on these proportion, the model estimates that the observed flower (from the data) can be 
+classified as and Iris Virginica flower. 
+
+Note that as for the first experiment, in this case it is also necessary to train the model for recognition. 
+The training data process for \ac{NN} is similar to that explained in the previous section through  
+estimators provided as part of the TensorFlow API. 
+
 
 %%%%
-\subsection{Experiments Analysis}
+\subsection{Experiment Analysis}
 
-For both, the Housing and Flower problems, models were trained and predictions were made. When working with information such as the California Housing system, where there is a large amount of data classified in different ways, it was possible to determine empirically that Linear Regression supervised Machine Learning was the most appropriate way to recover a certain trait present in the data. This statement is drawn from the fact that no previous outcome was determined for each information used in the model, thus adjusting Hyperparameters was the only resource available for the user to shape the model.  From here evaluations were made concluding that indeed Linear Regression models present useful solutions while keeping the process accessible and simple for users that are starting to work with \ac{ML}.  On the other hand information accesible for the second project was different resulting in the implementation of a distinct form of \ac{ML}. In this case there was a set of characteristics in which information was supposed to fit in, based on this a Neural Network approach was more feasible. The complexity of the model's input reflected how the Network was modeled and how deep the layers were. Additionally, thanks to probability provided by the model, classifying data becomes a process in which results over time sharpen the classification precision. 
+For both, the housing system and flower classification experiments, their corresponding \ac{ML} 
+models are trained using estimators to make accurate predictions. In the case of the California 
+housing system, where there is a large amount of data with multiple classifications, we observe that 
+the supervised \ac{ML} model for linear regression is the most appropriate technique for recovering 
+specific traits featured in the data. This is drawn from the fact that no previous outcome was 
+determined for the features used in the model. 
+Furthermore, notice that the majority of the effort in the development process of the model is on 
+adjusting the hyperparameters, which shape the model.  
 
+Based on these observations, and the characteristic definitions of the model, we conclude that, 
+indeed, linear regression models are adequate for predictions of large amounts of data. Additionally 
+we remark that the linear regression model is an accessible technique for users starting to work with 
+\ac{ML}.  
 
-Practitioners using \ac{ML} for a particular project, should only be concerned with the high-level API, providing out-of-the-box estimators appropriate to the specific \ac{ML} technique to use.
+In the case of the flower classification experiment, the information was different as the features to 
+examine were more constrained, the available information was smaller, and the prediction had to be 
+classified among three types of flowers. Based on this, the linear regression model is no longer 
+applicable, therefore the \tensorcode{DNNClassifier} was used to construct a \ac{NN}, enabling 
+multi-class classification~\cite{tensor18}.
+When using \ac{NN}, the complexity of the model's input reflects the shape of the network (taking into 
+account how many layers are needed). Note that the model inherently provides a proportion of 
+accuracy (\ie probability in the prediction) to classifying data. As a consequence, the model's 
+precision improves over time. 
 
-%%%%
-%\subsection{Threads to Validity}
-
+Finally, we remark that practitioners using \ac{ML} for a particular project, should only be concerned 
+with the high-level API, providing out-of-the-box estimators appropriate to the specific \ac{ML} 
+technique to use.
 
 
 \endinput
-
-
 
